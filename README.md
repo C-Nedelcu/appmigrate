@@ -1,4 +1,4 @@
-appmigrate
+AppMigrate
 ==========
 
 AppMigrate: Migrate your Windows applications easily
