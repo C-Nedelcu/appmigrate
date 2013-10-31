@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using Microsoft.Win32;
-using System.Collections;
+﻿using AppMigrate.Classes;
+using AppMigrate.Properties;
 using BrightIdeasSoftware;
-using System.Xml;
-using System.IO;
-using AppMigrate.Classes;
-using System.Threading;
-using System.Diagnostics;
 using Ionic.Zip;
+using System;
+using System.Collections;
+using System.ComponentModel;
+using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
 
 
 namespace AppMigrate
@@ -40,10 +34,17 @@ namespace AppMigrate
             // Check if AppCatalog.xml is present. If not, update database
             if (!File.Exists("AppCatalog.xml"))
             {
-                MessageBox.Show("Welcome to AppMigrate.\nThe latest application database will now be downloaded from the Internet. Please make sure your computer has an active Internet connection.","Information",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("Welcome to AppMigrate.\nThe latest application database will now be downloaded from the Internet. Please make sure your computer has an active Internet connection.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 UpdateWanted = true; // We want an update as soon as the main form is shown
-            } else 
+            }
+            else if (Settings.Default.CheckDatabaseUPdateOnStartup)
+            {
+                UpdateWanted = true;
+            }
+            else
+            {
                 InitializeAppList();
+            }
         }
 
 
@@ -455,6 +456,11 @@ namespace AppMigrate
         {
             // If the selection is empty, disable the Save button
             tsbExport.Enabled = appListView.SelectedItems.Count > 0;
+        }
+
+        private void tsbSettings_Click(object sender, EventArgs e)
+        {
+            new SettingsForm().ShowDialog();
         }
 
     }
