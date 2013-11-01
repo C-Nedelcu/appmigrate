@@ -91,11 +91,20 @@ namespace AppMigrate
             tsbExport.Enabled = ( appListView.SelectedItems.Count > 0 );
         }
 
+        private void EnableMainForm(bool enable)
+        {
+            toolStrip1.Enabled = enable;
+            appListView.Enabled = enable;
+        }
 
         private void tsbExport_Click(object sender, EventArgs e)
         {
             // Browse folder
             if (folderBrowserDialog1.ShowDialog(this) == System.Windows.Forms.DialogResult.Cancel) return;
+
+            // Disable main form
+            EnableMainForm(false);
+
             SelectedPath = folderBrowserDialog1.SelectedPath;
             OperationMode = "EXPORT";
 
@@ -297,6 +306,7 @@ namespace AppMigrate
             MessageBox.Show("Operation complete.","Information",MessageBoxButtons.OK,MessageBoxIcon.Information);
             ProgressForm.Close();
             ProgressForm.Dispose();
+            EnableMainForm(true);
         }
 
 
