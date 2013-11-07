@@ -31,6 +31,8 @@
             this.cbCheckDatabaseUpdateOnStartup = new System.Windows.Forms.CheckBox();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.applyBtn = new System.Windows.Forms.Button();
+            this.cbPassword = new System.Windows.Forms.CheckBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // cbCheckDatabaseUpdateOnStartup
@@ -63,11 +65,32 @@
             this.applyBtn.UseVisualStyleBackColor = true;
             this.applyBtn.Click += new System.EventHandler(this.applyBtn_Click);
             // 
+            // cbPassword
+            // 
+            this.cbPassword.AutoSize = true;
+            this.cbPassword.Location = new System.Drawing.Point(12, 45);
+            this.cbPassword.Name = "cbPassword";
+            this.cbPassword.Size = new System.Drawing.Size(101, 17);
+            this.cbPassword.TabIndex = 8;
+            this.cbPassword.Text = "Use password:";
+            this.cbPassword.UseVisualStyleBackColor = true;
+            this.cbPassword.CheckedChanged += new System.EventHandler(this.cbPassword_CheckedChanged);
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Enabled = false;
+            this.txtPassword.Location = new System.Drawing.Point(120, 45);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(144, 22);
+            this.txtPassword.TabIndex = 9;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 269);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.cbPassword);
             this.Controls.Add(this.applyBtn);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.cbCheckDatabaseUpdateOnStartup);
@@ -87,5 +110,7 @@
         private System.Windows.Forms.CheckBox cbCheckDatabaseUpdateOnStartup;
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Button applyBtn;
+        private System.Windows.Forms.CheckBox cbPassword;
+        private System.Windows.Forms.TextBox txtPassword;
     }
 }

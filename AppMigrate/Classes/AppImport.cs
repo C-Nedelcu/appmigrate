@@ -106,7 +106,7 @@ namespace AppMigrate.Classes
         }
 
         // Unzip all package files to temporary folder
-        public string UnzipPackage()
+        public string UnzipPackage(string zipPassword = null)
         {
             var extractFolder = package.GetAppTemporaryFolder();
 
@@ -125,6 +125,11 @@ namespace AppMigrate.Classes
             {
                 using (ZipFile zip = new ZipFile(this.filename))
                 {
+                    if(!string.IsNullOrEmpty(zipPassword))
+                    {
+                        zip.Password = zipPassword;
+                    }
+
                     zip.ParallelDeflateThreshold = -1;
 
                     if (package.AddProgressEvent != null)

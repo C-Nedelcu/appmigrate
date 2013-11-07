@@ -67,7 +67,7 @@ namespace AppMigrate
         }
         
         // Export package
-        public bool Export(string OutputFilePath, ProgressDialogForm progressForm)
+        public bool Export(string OutputFilePath, ProgressDialogForm progressForm, string zipPassword = null)
         {
             // 1. create folder to store temporary files
             string error = CreateAppFolder();
@@ -94,7 +94,7 @@ namespace AppMigrate
             if (progressForm.WantCancel) return false;
 
             // 3. copy concerned folders (zipped)
-            error = GenerateZipPackage();
+            error = GenerateZipPackage(zipPassword);
             if (error != "")
             {
                 MessageBox.Show("Package creation failed for " + this.Name + ": AppMigrate could not read one or more of the required data files.\n\nSystem error: " + error+"\n\nSolution: make sure "+this.Name+" is not running while exporting settings.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -170,12 +170,17 @@ namespace AppMigrate
         /// <summary>
         /// Zip folders of the application into the temp directory
         /// </summary>
-        private string GenerateZipPackage()
+        private string GenerateZipPackage(string zipPassword = null)
         {
             try
             {
                 using (ZipFile zip = new ZipFile())
                 {
+                    if(!string.IsNullOrEmpty(zipPassword))
+                    {
+                        zip.Password = zipPassword;
+                    }
+
                     zip.CompressionLevel = Ionic.Zlib.CompressionLevel.BestSpeed;
                     zip.ParallelDeflateThreshold = -1;
 
