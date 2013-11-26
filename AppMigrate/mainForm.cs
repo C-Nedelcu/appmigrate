@@ -169,7 +169,7 @@ namespace AppMigrate
                     app.package.ReadProgressEvent = zip_ReadProgress;
                     app.package.SaveProgressEvent = zip_SaveProgress;
 
-                    app.package.Export(SelectedPath,ProgressForm);
+                    app.package.Export(SelectedPath, ProgressForm, Settings.Default.Password);
                 }
             }
 
@@ -213,7 +213,7 @@ namespace AppMigrate
                         app.package.ExtractProgressEvent = zip_ExtractProgress;
                         app.package.ReadProgressEvent = zip_ReadProgress;
                         app.package.SaveProgressEvent = zip_SaveProgress;
-                        error = app.UnzipPackage();
+                        error = app.UnzipPackage(Settings.Default.Password);
                         if (error != "")
                         {
                             MessageBox.Show("Could not extract "+app.package.Name+" package data:\nError 1: "+error,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);

@@ -21,6 +21,7 @@ namespace AppMigrate
         private void applyBtn_Click(object sender, EventArgs e)
         {
             Settings.Default.CheckDatabaseUPdateOnStartup = this.cbCheckDatabaseUpdateOnStartup.Checked;
+            Settings.Default.Password = this.txtPassword.Text;
             Settings.Default.Save();
             this.Close();
         }
@@ -28,6 +29,15 @@ namespace AppMigrate
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cbPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            this.txtPassword.Enabled = this.cbPassword.Checked;
+            if(!this.cbPassword.Checked)
+            {
+                this.txtPassword.Text = string.Empty;
+            }
         }
     }
 }
