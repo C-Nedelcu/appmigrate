@@ -45,6 +45,7 @@
             this.appWorker = new System.ComponentModel.BackgroundWorker();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.tsbSettings = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -58,7 +59,7 @@
             this.panel1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(673, 95);
+            this.panel1.Size = new System.Drawing.Size(731, 95);
             this.panel1.TabIndex = 0;
             // 
             // toolStrip1
@@ -69,10 +70,11 @@
             this.tsbImport,
             this.tsbExport,
             this.tsbUpdate,
+            this.tsbSettings,
             this.tsbAbout});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(673, 92);
+            this.toolStrip1.Size = new System.Drawing.Size(731, 92);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -91,7 +93,7 @@
             this.tsbSupportedAppsOnly.Text = "Supported apps only";
             this.tsbSupportedAppsOnly.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbSupportedAppsOnly.ToolTipText = "Click this button to view all applications installed on your system, or only the " +
-                "applications that are supported by AppMigrate.";
+    "applications that are supported by AppMigrate.";
             this.tsbSupportedAppsOnly.CheckStateChanged += new System.EventHandler(this.tsbFilterApps_CheckStateChanged);
             // 
             // tsbImport
@@ -157,7 +159,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 95);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(673, 449);
+            this.panel2.Size = new System.Drawing.Size(731, 449);
             this.panel2.TabIndex = 1;
             // 
             // appListView
@@ -179,7 +181,7 @@
             this.appListView.Name = "appListView";
             this.appListView.RenderNonEditableCheckboxesAsDisabled = true;
             this.appListView.ShowImagesOnSubItems = true;
-            this.appListView.Size = new System.Drawing.Size(673, 449);
+            this.appListView.Size = new System.Drawing.Size(731, 449);
             this.appListView.TabIndex = 0;
             this.appListView.UseCompatibleStateImageBehavior = false;
             this.appListView.UseSubItemCheckBoxes = true;
@@ -233,8 +235,8 @@
             // folderBrowserDialog1
             // 
             this.folderBrowserDialog1.Description = "WARNING: make sure the applications you are backing up are closed before beginnin" +
-                "g the export. Select the folders where AppMigrate should store exported packages" +
-                ":";
+    "g the export. Select the folders where AppMigrate should store exported packages" +
+    ":";
             // 
             // openFileDialog1
             // 
@@ -243,11 +245,24 @@
             this.openFileDialog1.Multiselect = true;
             this.openFileDialog1.Title = "Select packages";
             // 
+            // tsbSettings
+            // 
+            this.tsbSettings.AutoSize = false;
+            this.tsbSettings.Image = ((System.Drawing.Image)(resources.GetObject("tsbSettings.Image")));
+            this.tsbSettings.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSettings.Name = "tsbSettings";
+            this.tsbSettings.Size = new System.Drawing.Size(120, 89);
+            this.tsbSettings.Text = "Settings";
+            this.tsbSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbSettings.ToolTipText = "Modify settings of AppMigrate";
+            this.tsbSettings.Click += new System.EventHandler(this.tsbSettings_Click);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(673, 544);
+            this.ClientSize = new System.Drawing.Size(731, 544);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -284,6 +299,7 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         public System.Windows.Forms.ToolStripButton tsbUpdate;
+        private System.Windows.Forms.ToolStripButton tsbSettings;
     }
 }
 
