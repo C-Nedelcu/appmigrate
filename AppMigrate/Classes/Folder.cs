@@ -101,7 +101,27 @@ namespace AppMigrate.Classes
                 Directory.CreateDirectory(parent);
 
             // Now move temp folder to new one
-            Directory.Move(folderPath, fullPath);
+            CopyFolder(folderPath, fullPath);
+        }
+
+        static public void CopyFolder(string sourceFolder, string destinationFolder)
+        {
+            if (!Directory.Exists(destinationFolder))
+            { 
+                Directory.CreateDirectory(destinationFolder);
+            }
+            
+            // Create all of the directories
+            foreach (string dirPath in Directory.GetDirectories(sourceFolder, "*", SearchOption.AllDirectories))
+            { 
+                Directory.CreateDirectory(dirPath.Replace(sourceFolder, destinationFolder));
+            }
+
+            // Copy all the files
+            foreach (string newPath in Directory.GetFiles(sourceFolder, "*.*", SearchOption.AllDirectories))
+            { 
+                File.Copy(newPath, newPath.Replace(sourceFolder, destinationFolder));
+            }
         }
     }
 }
